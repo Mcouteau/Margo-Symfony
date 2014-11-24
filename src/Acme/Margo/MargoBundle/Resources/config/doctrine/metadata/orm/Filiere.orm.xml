@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Filiere" table="filiere">
+    <unique-constraints>
+      <unique-constraint name="I_FK_FILIERE_ENSEIGNANT" columns="IDPERS"/>
+    </unique-constraints>
+    <id name="codefiliere" type="string" column="CODEFILIERE" length="32">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="libfiliere" type="string" column="LIBFILIERE" length="32" nullable="true"/>
+    <many-to-one field="idpers" target-entity="Enseignant">
+      <join-columns>
+        <join-column name="IDPERS" referenced-column-name="IDPERS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
