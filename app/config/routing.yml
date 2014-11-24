@@ -1,0 +1,4 @@
+margo_margo:
+    resource: "@MargoMargoBundle/Resources/config/routing.yml"
+    prefix:   /
+

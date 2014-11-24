@@ -1,0 +1,3 @@
+margo_margo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MargoMargoBundle:Default:index }
