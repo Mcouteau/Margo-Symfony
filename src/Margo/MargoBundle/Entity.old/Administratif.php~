@@ -5,61 +5,65 @@ namespace Margo\MargoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Etudiant
+ * Administratif
+ *
+ * @ORM\Table(name="administratif")
+ * @ORM\Entity
  */
-class Etudiant
+class Administratif
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
+     *
+     * @ORM\Column(name="NOM", type="string", length=32, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="PRENOM", type="string", length=32, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="SITUATION", type="string", length=32, nullable=true)
      */
     private $situation;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ADRESSE", type="string", length=32, nullable=true)
      */
     private $adresse;
 
     /**
-     * @var \Margo\MargoBundle\Entity\Classe
-     */
-    private $classe;
-
-
-    /**
-     * Get id
+     * @var \Personnel
      *
-     * @return integer 
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Personnel")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDPERS", referencedColumnName="IDPERS")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idpers;
+
+
 
     /**
      * Set nom
      *
      * @param string $nom
-     * @return Etudiant
+     * @return Administratif
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -77,12 +81,12 @@ class Etudiant
      * Set prenom
      *
      * @param string $prenom
-     * @return Etudiant
+     * @return Administratif
      */
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -100,12 +104,12 @@ class Etudiant
      * Set situation
      *
      * @param string $situation
-     * @return Etudiant
+     * @return Administratif
      */
     public function setSituation($situation)
     {
         $this->situation = $situation;
-    
+
         return $this;
     }
 
@@ -123,12 +127,12 @@ class Etudiant
      * Set adresse
      *
      * @param string $adresse
-     * @return Etudiant
+     * @return Administratif
      */
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
@@ -143,25 +147,25 @@ class Etudiant
     }
 
     /**
-     * Set classe
+     * Set idpers
      *
-     * @param \Margo\MargoBundle\Entity\Classe $classe
-     * @return Etudiant
+     * @param \Margo\MargoBundle\Entity\Personnel $idpers
+     * @return Administratif
      */
-    public function setClasse(\Margo\MargoBundle\Entity\Classe $classe = null)
+    public function setIdpers(\Margo\MargoBundle\Entity\Personnel $idpers)
     {
-        $this->classe = $classe;
-    
+        $this->idpers = $idpers;
+
         return $this;
     }
 
     /**
-     * Get classe
+     * Get idpers
      *
-     * @return \Margo\MargoBundle\Entity\Classe 
+     * @return \Margo\MargoBundle\Entity\Personnel 
      */
-    public function getClasse()
+    public function getIdpers()
     {
-        return $this->classe;
+        return $this->idpers;
     }
 }

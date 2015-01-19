@@ -1,0 +1,16 @@
+Margo\MargoBundle\Entity\Filiere:
+  type: entity
+  table: filiere
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 500
+      nullable: false
+  oneToMany:
+    classes:
+      targetEntity: Classe
+      mappedBy: filiere

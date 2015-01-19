@@ -1,0 +1,23 @@
+Margo\MargoBundle\Entity\Classe:
+  type: entity
+  table: classe
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255
+  oneToMany:
+    etudiants:
+      targetEntity: Etudiant
+      mappedBy: classe
+  manyToOne:
+    filiere:
+      targetEntity: Filiere
+      inversedBy: classes
+      joinColumn:
+        name: id_filiere
+        referencedColumnName: id
+  # n'oubliez pas d'initialiser la collection dans la méthode __construct() de l'entité

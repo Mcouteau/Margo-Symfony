@@ -151,32 +151,4 @@ class Classe
     {
         return $this->name;
     }
-    /**
-     * @var \Margo\MargoBundle\Entity\Filiere
-     */
-    private $filiere;
-
-
-    /**
-     * Set filiere
-     *
-     * @param \Margo\MargoBundle\Entity\Filiere $filiere
-     * @return Classe
-     */
-    public function setFiliere(\Margo\MargoBundle\Entity\Filiere $filiere = null)
-    {
-        $this->filiere = $filiere;
-    
-        return $this;
-    }
-
-    /**
-     * Get filiere
-     *
-     * @return \Margo\MargoBundle\Entity\Filiere 
-     */
-    public function getFiliere()
-    {
-        return $this->filiere;
-    }
 }

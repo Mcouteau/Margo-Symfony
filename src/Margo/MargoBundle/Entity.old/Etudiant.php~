@@ -6,49 +6,63 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Etudiant
+ *
+ * @ORM\Table(name="etudiant", indexes={@ORM\Index(name="I_FK_ETUDIANT_CLASSE", columns={"CODECLASSE"})})
+ * @ORM\Entity
  */
 class Etudiant
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
+     *
+     * @ORM\Column(name="NOM", type="string", length=32, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="PRENOM", type="string", length=32, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="SITUATION", type="string", length=32, nullable=true)
      */
     private $situation;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ADRESSE", type="string", length=32, nullable=true)
      */
     private $adresse;
 
     /**
-     * @var \Margo\MargoBundle\Entity\Classe
+     * @var \Classe
+     *
+     * @ORM\ManyToOne(targetEntity="Classe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="CODECLASSE", referencedColumnName="CODECLASSE")
+     * })
      */
-    private $classe;
-
+    private $codeclasse;
 
     /**
-     * Get id
+     * @var \Personne
      *
-     * @return integer 
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Personne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDPERS", referencedColumnName="IDPERS")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idpers;
+
+
 
     /**
      * Set nom
@@ -59,7 +73,7 @@ class Etudiant
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -82,7 +96,7 @@ class Etudiant
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -105,7 +119,7 @@ class Etudiant
     public function setSituation($situation)
     {
         $this->situation = $situation;
-    
+
         return $this;
     }
 
@@ -128,7 +142,7 @@ class Etudiant
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
@@ -143,25 +157,48 @@ class Etudiant
     }
 
     /**
-     * Set classe
+     * Set codeclasse
      *
-     * @param \Margo\MargoBundle\Entity\Classe $classe
+     * @param \Margo\MargoBundle\Entity\Classe $codeclasse
      * @return Etudiant
      */
-    public function setClasse(\Margo\MargoBundle\Entity\Classe $classe = null)
+    public function setCodeclasse(\Margo\MargoBundle\Entity\Classe $codeclasse = null)
     {
-        $this->classe = $classe;
-    
+        $this->codeclasse = $codeclasse;
+
         return $this;
     }
 
     /**
-     * Get classe
+     * Get codeclasse
      *
      * @return \Margo\MargoBundle\Entity\Classe 
      */
-    public function getClasse()
+    public function getCodeclasse()
     {
-        return $this->classe;
+        return $this->codeclasse;
+    }
+
+    /**
+     * Set idpers
+     *
+     * @param \Margo\MargoBundle\Entity\Personne $idpers
+     * @return Etudiant
+     */
+    public function setIdpers(\Margo\MargoBundle\Entity\Personne $idpers)
+    {
+        $this->idpers = $idpers;
+
+        return $this;
+    }
+
+    /**
+     * Get idpers
+     *
+     * @return \Margo\MargoBundle\Entity\Personne 
+     */
+    public function getIdpers()
+    {
+        return $this->idpers;
     }
 }

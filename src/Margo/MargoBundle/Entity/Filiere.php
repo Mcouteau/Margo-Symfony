@@ -6,93 +6,95 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Filiere
- *
- * @ORM\Table(name="filiere", uniqueConstraints={@ORM\UniqueConstraint(name="I_FK_FILIERE_ENSEIGNANT", columns={"IDPERS"})})
- * @ORM\Entity
  */
 class Filiere
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="CODEFILIERE", type="string", length=32, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var integer
      */
-    private $codefiliere;
+    private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="LIBFILIERE", type="string", length=32, nullable=true)
      */
-    private $libfiliere;
+    private $name;
 
     /**
-     * @var \Enseignant
-     *
-     * @ORM\ManyToOne(targetEntity="Enseignant")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDPERS", referencedColumnName="IDPERS")
-     * })
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $idpers;
-
-
+    private $classes;
 
     /**
-     * Get codefiliere
-     *
-     * @return string 
+     * Constructor
      */
-    public function getCodefiliere()
+    public function __construct()
     {
-        return $this->codefiliere;
+        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set libfiliere
+     * Get id
      *
-     * @param string $libfiliere
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
      * @return Filiere
      */
-    public function setLibfiliere($libfiliere)
+    public function setName($name)
     {
-        $this->libfiliere = $libfiliere;
-
+        $this->name = $name;
+    
         return $this;
     }
 
     /**
-     * Get libfiliere
+     * Get name
      *
      * @return string 
      */
-    public function getLibfiliere()
+    public function getName()
     {
-        return $this->libfiliere;
+        return $this->name;
     }
 
     /**
-     * Set idpers
+     * Add classes
      *
-     * @param \Margo\MargoBundle\Entity\Enseignant $idpers
+     * @param \Margo\MargoBundle\Entity\Classe $classes
      * @return Filiere
      */
-    public function setIdpers(\Margo\MargoBundle\Entity\Enseignant $idpers = null)
+    public function addClass(\Margo\MargoBundle\Entity\Classe $classes)
     {
-        $this->idpers = $idpers;
-
+        $this->classes[] = $classes;
+    
         return $this;
     }
 
     /**
-     * Get idpers
+     * Remove classes
      *
-     * @return \Margo\MargoBundle\Entity\Enseignant 
+     * @param \Margo\MargoBundle\Entity\Classe $classes
      */
-    public function getIdpers()
+    public function removeClass(\Margo\MargoBundle\Entity\Classe $classes)
     {
-        return $this->idpers;
+        $this->classes->removeElement($classes);
+    }
+
+    /**
+     * Get classes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClasses()
+    {
+        return $this->classes;
     }
 }
