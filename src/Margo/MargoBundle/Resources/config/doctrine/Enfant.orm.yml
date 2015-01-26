@@ -1,0 +1,26 @@
+Margo\MargoBundle\Entity\Enfant:
+  type: entity
+  table: enfant
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    firstname:
+      type: string
+      length: 500
+      nullable: false
+    lastname:
+      type: string
+      length: 500
+      nullable: false
+    birthdate:
+      type: datetime
+      nullable: false
+  manyToOne:
+    personnel:
+      targetEntity: Personnel
+      inversedBy: enfants
+      joinColumn:
+        name: id_enfant
+        referencedColumnName: id

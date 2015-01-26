@@ -6,21 +6,8 @@ Margo\MargoBundle\Entity\Etudiant:
       type: integer
       generator: { strategy: AUTO }
   fields:
-    nom:
-      type: string
-      length: 500
-      nullable: false
-    prenom:
-      type: string
-      length: 500
-      nullable: false
-    situation:
-      type: string
-      length: 50
-      nullable: false
-    adresse:
-      type: string
-      length: 1000
+    birthdate:
+      type: datetime
       nullable: false
   manyToOne:
     classe:

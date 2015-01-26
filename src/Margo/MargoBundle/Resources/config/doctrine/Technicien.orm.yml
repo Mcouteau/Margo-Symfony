@@ -1,0 +1,12 @@
+Margo\MargoBundle\Entity\Technicien:
+  type: entity
+  table: technicien
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    entreprise:
+      type: string
+      length: 500
+      nullable: false

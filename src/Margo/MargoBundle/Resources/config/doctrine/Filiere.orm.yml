@@ -14,3 +14,9 @@ Margo\MargoBundle\Entity\Filiere:
     classes:
       targetEntity: Classe
       mappedBy: filiere
+    intervenants:
+      targetEntity: Intervenant
+      mappedBy: filiere
+    matieres:
+      targetEntity: Matiere
+      mappedBy: filiere

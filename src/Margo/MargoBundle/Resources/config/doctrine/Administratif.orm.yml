@@ -1,0 +1,11 @@
+Margo\MargoBundle\Entity\Administratif:
+  type: entity
+  table: administratif
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    age:
+      type: integer
+      nullable: false

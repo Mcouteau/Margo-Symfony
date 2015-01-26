@@ -164,4 +164,60 @@ class Etudiant
     {
         return $this->classe;
     }
+    /**
+     * @var integer
+     */
+    private $age;
+
+
+    /**
+     * Set age
+     *
+     * @param integer $age
+     * @return Etudiant
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return integer 
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $birthdate;
+
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     * @return Etudiant
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime 
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
 }

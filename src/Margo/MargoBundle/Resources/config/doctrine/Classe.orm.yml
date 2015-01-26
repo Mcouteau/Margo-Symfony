@@ -20,4 +20,14 @@ Margo\MargoBundle\Entity\Classe:
       joinColumn:
         name: id_filiere
         referencedColumnName: id
-  # n'oubliez pas d'initialiser la collection dans la méthode __construct() de l'entité
+  manyToMany:
+    intervenants:
+      targetEntity: Intervenant
+      joinTable:
+        name: classe_intervenant
+        joinColumns:
+          id_classe:
+            referencedColumnName: id
+        inverseJoinColumns:
+          id_intervenant:
+            referencedColumnName: id

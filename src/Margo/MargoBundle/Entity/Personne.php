@@ -5,9 +5,9 @@ namespace Margo\MargoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Etudiant
+ * Personne
  */
-class Etudiant
+class Personne
 {
     /**
      * @var integer
@@ -35,10 +35,17 @@ class Etudiant
     private $adresse;
 
     /**
-     * @var \Margo\MargoBundle\Entity\Classe
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $classe;
+    private $classes;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -54,7 +61,7 @@ class Etudiant
      * Set nom
      *
      * @param string $nom
-     * @return Etudiant
+     * @return Personne
      */
     public function setNom($nom)
     {
@@ -77,7 +84,7 @@ class Etudiant
      * Set prenom
      *
      * @param string $prenom
-     * @return Etudiant
+     * @return Personne
      */
     public function setPrenom($prenom)
     {
@@ -100,7 +107,7 @@ class Etudiant
      * Set situation
      *
      * @param string $situation
-     * @return Etudiant
+     * @return Personne
      */
     public function setSituation($situation)
     {
@@ -123,7 +130,7 @@ class Etudiant
      * Set adresse
      *
      * @param string $adresse
-     * @return Etudiant
+     * @return Personne
      */
     public function setAdresse($adresse)
     {
@@ -143,81 +150,91 @@ class Etudiant
     }
 
     /**
-     * Set classe
+     * Add classes
      *
-     * @param \Margo\MargoBundle\Entity\Classe $classe
-     * @return Etudiant
+     * @param \Margo\MargoBundle\Entity\Classe $classes
+     * @return Personne
      */
-    public function setClasse(\Margo\MargoBundle\Entity\Classe $classe = null)
+    public function addClass(\Margo\MargoBundle\Entity\Classe $classes)
     {
-        $this->classe = $classe;
+        $this->classes[] = $classes;
     
         return $this;
     }
 
     /**
-     * Get classe
+     * Remove classes
      *
-     * @return \Margo\MargoBundle\Entity\Classe 
+     * @param \Margo\MargoBundle\Entity\Classe $classes
      */
-    public function getClasse()
+    public function removeClass(\Margo\MargoBundle\Entity\Classe $classes)
     {
-        return $this->classe;
+        $this->classes->removeElement($classes);
+    }
+
+    /**
+     * Get classes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClasses()
+    {
+        return $this->classes;
     }
     /**
-     * @var integer
+     * @var string
      */
-    private $age;
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
 
 
     /**
-     * Set age
+     * Set email
      *
-     * @param integer $age
-     * @return Etudiant
+     * @param string $email
+     * @return Personne
      */
-    public function setAge($age)
+    public function setEmail($email)
     {
-        $this->age = $age;
+        $this->email = $email;
     
         return $this;
     }
 
     /**
-     * Get age
+     * Get email
      *
-     * @return integer 
+     * @return string 
      */
-    public function getAge()
+    public function getEmail()
     {
-        return $this->age;
+        return $this->email;
     }
-    /**
-     * @var \DateTime
-     */
-    private $birthdate;
-
 
     /**
-     * Set birthdate
+     * Set password
      *
-     * @param \DateTime $birthdate
-     * @return Etudiant
+     * @param string $password
+     * @return Personne
      */
-    public function setBirthdate($birthdate)
+    public function setPassword($password)
     {
-        $this->birthdate = $birthdate;
+        $this->password = $password;
     
         return $this;
     }
 
     /**
-     * Get birthdate
+     * Get password
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getBirthdate()
+    public function getPassword()
     {
-        return $this->birthdate;
+        return $this->password;
     }
 }

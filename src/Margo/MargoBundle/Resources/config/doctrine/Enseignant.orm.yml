@@ -1,0 +1,12 @@
+Margo\MargoBundle\Entity\Enseignant:
+  type: entity
+  table: enseignant
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    niveau_etudes:
+      type: string
+      length: 500
+      nullable: false

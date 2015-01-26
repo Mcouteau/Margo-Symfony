@@ -1,16 +1,40 @@
-Margo\MargoBundle\Entity\Filiere:
+Margo\MargoBundle\Entity\Personne:
   type: entity
-  table: filiere
+  table: personne
+  inheritanceType: JOINED
+  discriminatorColumn:
+    name: type
+    type: string
+    length: 255
+  discriminatorMap:
+    etudiant: Etudiant
+    personnel: Personnel
   id:
     id:
       type: integer
       generator: { strategy: AUTO }
   fields:
-    name:
+    email:
       type: string
       length: 500
       nullable: false
-  oneToMany:
-    classes:
-      targetEntity: Classe
-      mappedBy: filiere
+    password:
+      type: string
+      length: 500
+      nullable: false
+    nom:
+      type: string
+      length: 500
+      nullable: false
+    prenom:
+      type: string
+      length: 500
+      nullable: false
+    situation:
+      type: string
+      length: 50
+      nullable: false
+    adresse:
+      type: string
+      length: 1000
+      nullable: false

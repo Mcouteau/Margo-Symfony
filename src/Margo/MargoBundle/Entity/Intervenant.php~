@@ -1,0 +1,55 @@
+<?php
+
+namespace Margo\MargoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Intervenant
+ */
+class Intervenant
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     */
+    private $is_permanent;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set is_permanent
+     *
+     * @param boolean $isPermanent
+     * @return Intervenant
+     */
+    public function setIsPermanent($isPermanent)
+    {
+        $this->is_permanent = $isPermanent;
+    
+        return $this;
+    }
+
+    /**
+     * Get is_permanent
+     *
+     * @return boolean 
+     */
+    public function getIsPermanent()
+    {
+        return $this->is_permanent;
+    }
+}

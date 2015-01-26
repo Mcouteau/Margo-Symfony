@@ -1,0 +1,23 @@
+Margo\MargoBundle\Entity\Matiere:
+  type: entity
+  table: matiere
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 500
+      nullable: false
+  manyToMany:
+    intervenants:
+      targetEntity: Intervenant
+      joinTable:
+        name: matiere_intervenant
+        joinColumns:
+          id_matiere:
+            referencedColumnName: id
+        inverseJoinColumns:
+          id_intervenant:
+            referencedColumnName: id

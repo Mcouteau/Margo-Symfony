@@ -179,4 +179,42 @@ class Classe
     {
         return $this->filiere;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $intervenants;
+
+
+    /**
+     * Add intervenants
+     *
+     * @param \Margo\MargoBundle\Entity\Intervenant $intervenants
+     * @return Classe
+     */
+    public function addIntervenant(\Margo\MargoBundle\Entity\Intervenant $intervenants)
+    {
+        $this->intervenants[] = $intervenants;
+    
+        return $this;
+    }
+
+    /**
+     * Remove intervenants
+     *
+     * @param \Margo\MargoBundle\Entity\Intervenant $intervenants
+     */
+    public function removeIntervenant(\Margo\MargoBundle\Entity\Intervenant $intervenants)
+    {
+        $this->intervenants->removeElement($intervenants);
+    }
+
+    /**
+     * Get intervenants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIntervenants()
+    {
+        return $this->intervenants;
+    }
 }

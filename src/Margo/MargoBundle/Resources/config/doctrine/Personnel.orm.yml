@@ -1,0 +1,30 @@
+Margo\MargoBundle\Entity\Personnel:
+  type: entity
+  table: personnel
+  #inheritanceType: JOINED
+ # discriminatorColumn:
+#    name: type
+ #   type: string
+#    length: 255
+ # discriminatorMap:
+ #   administratif: Administratif
+ #   intervenant: Intervenant
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    type_contrat:
+      type: string
+      length: 255
+      nullable: false
+    date_debut_contrat:
+      type: datetime
+      nullable: false
+    date_fin_contrat:
+      type: datetime
+      nullable: true
+  oneToMany:
+    enfants:
+      targetEntity: Enfant
+      mappedBy: personnel

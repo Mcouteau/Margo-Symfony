@@ -1,0 +1,25 @@
+Margo\MargoBundle\Entity\Intervenant:
+  type: entity
+  table: intervenant
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  discriminatorColumn:
+    name: type
+    type: string
+    length: 255
+  discriminatorMap:
+    enseignant: Enseignant
+    Technicien: Technicien
+  fields:
+    is_permanent:
+      type: boolean
+      nullable: true
+  manyToMany:
+    matieres:
+      targetEntity: Matiere
+      mappedBy: intervenants
+    classes:
+      targetEntity: Classe
+      mappedBy: intervenants
