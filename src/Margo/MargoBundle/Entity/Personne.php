@@ -3,7 +3,6 @@
 namespace Margo\MargoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-// http://symfony.com/doc/current/cookbook/security/entity_provider.htmluse Symfony\Component\Security\Core\User\UserInterfac
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -40,7 +39,16 @@ class Personne implements UserInterface, \Serializable
      * @var string
      */
     private $adresse;
-
+    
+    /**
+     * @var bool
+     */
+    private $isActive;
+    
+    public function __construct() 
+    {
+      $this->isActive = true;
+    }
     /**
      * Set email
      *
@@ -50,7 +58,8 @@ class Personne implements UserInterface, \Serializable
     public function setEmail($email)
     {
         $this->email = $email;
-    
+        $this->username = $email;
+        
         return $this;
     }
 
@@ -178,19 +187,35 @@ class Personne implements UserInterface, \Serializable
     {
         return $this->adresse;
     }
-    
+     /**
+     * Get roles
+     *
+     * @return Array 
+     */
     public function getRoles() {
       return array('ROLE_USER');
     }
-    
+     /**
+     * Get salt
+     *
+     * @return null 
+     */
     public function getSalt() {
       return null;
     }
-    
+     /**
+     * Get username
+     *
+     * @return string 
+     */
     public function getUsername() {
-      return $this->email;
+      return $this->username;
     }
-    
+     /**
+     * Get adresse
+     *
+     * @return string 
+     */
     public function eraseCredentials() {
       
     }
@@ -200,7 +225,7 @@ class Personne implements UserInterface, \Serializable
     public function serialize() {
       return serialize(array(
         $this->id,
-        $this->getUsername(),
+        $this->username,
         $this->password
       ));
     }
@@ -211,8 +236,23 @@ class Personne implements UserInterface, \Serializable
     public function unserialize($serialized) {
       list(
               $this->id,
-              $this->getUsername(),
+              $this->username,
               $this->password
       ) = unserialize($serialized);
+    }
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
