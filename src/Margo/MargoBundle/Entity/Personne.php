@@ -12,11 +12,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class Personne implements UserInterface, \Serializable
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $email;
@@ -45,17 +40,6 @@ class Personne implements UserInterface, \Serializable
      * @var string
      */
     private $adresse;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set email
@@ -216,7 +200,7 @@ class Personne implements UserInterface, \Serializable
     public function serialize() {
       return serialize(array(
         $this->id,
-        $this->username,
+        $this->getUsername(),
         $this->password
       ));
     }
@@ -227,7 +211,7 @@ class Personne implements UserInterface, \Serializable
     public function unserialize($serialized) {
       list(
               $this->id,
-              $this->username,
+              $this->getUsername(),
               $this->password
       ) = unserialize($serialized);
     }
