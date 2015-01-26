@@ -3,16 +3,28 @@
 namespace Margo\MargoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+// http://symfony.com/doc/current/cookbook/security/entity_provider.htmluse Symfony\Component\Security\Core\User\UserInterfac
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Personne
  */
-class Personne
+class Personne implements UserInterface, \Serializable
 {
     /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
 
     /**
      * @var string
@@ -34,18 +46,6 @@ class Personne
      */
     private $adresse;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $classes;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -55,6 +55,52 @@ class Personne
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Personne
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Personne
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     /**
@@ -148,93 +194,42 @@ class Personne
     {
         return $this->adresse;
     }
-
-    /**
-     * Add classes
-     *
-     * @param \Margo\MargoBundle\Entity\Classe $classes
-     * @return Personne
-     */
-    public function addClass(\Margo\MargoBundle\Entity\Classe $classes)
-    {
-        $this->classes[] = $classes;
     
-        return $this;
+    public function getRoles() {
+      return array('ROLE_USER');
     }
-
-    /**
-     * Remove classes
-     *
-     * @param \Margo\MargoBundle\Entity\Classe $classes
-     */
-    public function removeClass(\Margo\MargoBundle\Entity\Classe $classes)
-    {
-        $this->classes->removeElement($classes);
-    }
-
-    /**
-     * Get classes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getClasses()
-    {
-        return $this->classes;
-    }
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Personne
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     
-        return $this;
+    public function getSalt() {
+      return null;
     }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Personne
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
     
-        return $this;
+    public function getUsername() {
+      return $this->email;
     }
-
+    
+    public function eraseCredentials() {
+      
+    }
     /**
-     * Get password
-     *
-     * @return string 
+     * @see \Serializable::serialize()
      */
-    public function getPassword()
-    {
-        return $this->password;
+    public function serialize() {
+      return serialize(array(
+        $this->id,
+        $this->username,
+        $this->password
+      ));
+    }
+    
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized) {
+      list(
+              $this->id,
+              $this->username,
+              $this->password
+      ) = unserialize($serialized);
     }
 }
+

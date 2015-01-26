@@ -9,28 +9,22 @@ class LoadClasseData {
   public function load(ObjectManager $manager) {
     $classes = [
       [
-        'libClasse' => 'Administration système - 1ère année',
-        'codeFiliere' => 'AS',
+        'name' => 'Administration système - 1ère année',
       ],
       [
-        'libClasse' => 'Administration système - 2ème année',
-        'codeFiliere' => 'AS',
+        'name' => 'Administration système - 2ème année',
       ],
       [
-        'libClasse' => 'Développement Logiciel - 1ère année',
-        'codeFiliere' => 'DEV',
+        'name' => 'Développement Logiciel - 1ère année',
       ],
       [
-        'libClasse' => 'Développement Logiciel - 2ème année',
-        'codeFiliere' => 'DEV',
+        'name' => 'Développement Logiciel - 2ème année',
       ],
       [
-        'libClasse' => 'Management des Systèmes d\'Information - 1ère année',
-        'codeFiliere' => 'MSI',
+        'name' => 'Management des Systèmes d\'Information - 1ère année',
       ],
       [
-        'libClasse' => 'Management des Systèmes d\'Information - 2ème année',
-        'codeFiliere' => 'MSI',
+        'name' => 'Management des Systèmes d\'Information - 2ème année',
       ],
     ];
     foreach ($classes as $classData) {

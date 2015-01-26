@@ -17,8 +17,31 @@ class Classe
     /**
      * @var string
      */
-    private $libClasse;
+    private $name;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $etudiants;
+
+    /**
+     * @var \Margo\MargoBundle\Entity\Filiere
+     */
+    private $filiere;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $intervenants;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->intervenants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -31,53 +54,26 @@ class Classe
     }
 
     /**
-     * Set libClasse
+     * Set name
      *
-     * @param string $libClasse
+     * @param string $name
      * @return Classe
      */
-    public function setLibClasse($libClasse)
+    public function setName($name)
     {
-        $this->libClasse = $libClasse;
+        $this->name = $name;
     
         return $this;
     }
 
     /**
-     * Get libClasse
+     * Get name
      *
      * @return string 
      */
-    public function getLibClasse()
+    public function getName()
     {
-        return $this->libClasse;
-    }
-    /**
-     * @var integer
-     */
-    private $codeClasse;
-
-
-    /**
-     * Get codeClasse
-     *
-     * @return integer 
-     */
-    public function getCodeClasse()
-    {
-        return $this->codeClasse;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $etudiants;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->name;
     }
 
     /**
@@ -112,50 +108,6 @@ class Classe
     {
         return $this->etudiants;
     }
-    /**
-     * @var integer
-     */
-    private $code_classe;
-
-    /**
-     * @var string
-     */
-    private $lib_classe;
-
-
-    /**
-     * @var string
-     */
-    private $name;
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Classe
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    /**
-     * @var \Margo\MargoBundle\Entity\Filiere
-     */
-    private $filiere;
-
 
     /**
      * Set filiere
@@ -179,11 +131,6 @@ class Classe
     {
         return $this->filiere;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $intervenants;
-
 
     /**
      * Add intervenants

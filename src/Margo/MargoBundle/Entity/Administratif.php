@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Administratif
  */
-class Administratif
+class Administratif extends Personnel
 {
     /**
      * @var integer

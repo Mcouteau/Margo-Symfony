@@ -11,67 +11,59 @@ class LoadEtudiantData implements FixtureInterface {
       [
         'firstname' => 'Nicolette',
         'lastname' => 'Casgrain',
+        'email' => 'ncasgrain@yahoo.fr',
         'adresse' => '28, rue Banaudon 69008 LYON',
         'situation' => 'Célibataire',
-        'codeclasse' => 1,
-        'idpers' => 1
       ],
       [
         'firstname' => 'Jérôme',
         'lastname' => 'Barteaux',
+        'email' => 'jbart22@wanadoo.fr',
         'adresse' => '74, rue Reine Elisabeth 06500 MENTON',
         'situation' => 'Célibataire',
-        'codeclasse' => 1,
-        'idpers' => 2
       ],
       [
         'firstname' => 'Gérard',
         'lastname' => 'Echeverri',
+        'email' => 'ganglion@yopmail.com',
         'adresse' => '22, Place du Jeu de Paume 94800 VILLEJUIF',
         'situation' => 'Célibataire',
-        'codeclasse' => 1,
-        'idpers' => 3
       ],
       [
         'firstname' => 'Thérèse',
         'lastname' => 'Bériault',
+        'email' => 'lagrossetherese@free.fr',
         'adresse' => '86, rue du Château 44800 SAINT-HERBLAIN',
         'situation' => 'Célibataire',
-        'codeclasse' => 1,
-        'idpers' => 4
       ],
       [
         'firstname' => 'Etoile',
         'lastname' => 'Desroches',
+        'email' => 'etoiledesneiges@gmail.com',
         'adresse' => '33, rue Bonneterie 13140 MIRAMAS',
         'situation' => 'Marié',
-        'codeclasse' => 2,
-        'idpers' => 5
       ],
       [
         'firstname' => 'Daniel',
         'lastname' => 'D\'Aubigné',
+        'email' => 'jadorelechou@neuf.fr',
         'adresse' => '6, rue Gouin de Beauchesne 97460 SAINT-PAUL',
         'situation' => 'Célibataire',
-        'codeclasse' => 2,
-        'idpers' => 6
       ],
       [
         'firstname' => 'Carole',
         'lastname' => 'LaCaille',
+        'email' => 'caillecaille@numericable.fr',
         'adresse' => '61, Rue St Ferréol 57050 METZ',
         'situation' => 'Célibataire',
-        'codeclasse' => 2,
-        'idpers' => 7
       ],
     ];
     foreach($etudiants as $etudiant) {
       $student = new Etudiant();
       $student->setPrenom($etudiant['firstname'])
               ->setNom($etudiant['lastname'])
-              ->setAdresse($etudiant['adresse'])
-              ->setCodeclasse($etudiant['codeclasse'])
-              ->setIdpers($etudiant['idpers']);
+              ->setEmail($etudiant['email'])
+              ->setAdresse($etudiant['adresse']);
       
       $manager->persist($student);
       $manager->flush();

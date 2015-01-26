@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Enseignant
  */
-class Enseignant
+class Enseignant extends Intervenant
 {
     /**
      * @var integer

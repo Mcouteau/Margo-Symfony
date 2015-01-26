@@ -1,10 +1,6 @@
 Margo\MargoBundle\Entity\Etudiant:
   type: entity
   table: etudiant
-  id:
-    id:
-      type: integer
-      generator: { strategy: AUTO }
   fields:
     birthdate:
       type: datetime

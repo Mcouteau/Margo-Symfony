@@ -1,10 +1,7 @@
 Margo\MargoBundle\Entity\Intervenant:
   type: entity
   table: intervenant
-  id:
-    id:
-      type: integer
-      generator: { strategy: AUTO }
+  inheritanceType: JOINED
   discriminatorColumn:
     name: type
     type: string

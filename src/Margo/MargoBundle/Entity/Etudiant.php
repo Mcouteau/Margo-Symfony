@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Etudiant
  */
-class Etudiant
+class Etudiant extends Personne
 {
     /**
      * @var integer
@@ -15,24 +15,9 @@ class Etudiant
     private $id;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $nom;
-
-    /**
-     * @var string
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     */
-    private $situation;
-
-    /**
-     * @var string
-     */
-    private $adresse;
+    private $birthdate;
 
     /**
      * @var \Margo\MargoBundle\Entity\Classe
@@ -51,95 +36,26 @@ class Etudiant
     }
 
     /**
-     * Set nom
+     * Set birthdate
      *
-     * @param string $nom
+     * @param \DateTime $birthdate
      * @return Etudiant
      */
-    public function setNom($nom)
+    public function setBirthdate($birthdate)
     {
-        $this->nom = $nom;
+        $this->birthdate = $birthdate;
     
         return $this;
     }
 
     /**
-     * Get nom
+     * Get birthdate
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getNom()
+    public function getBirthdate()
     {
-        return $this->nom;
-    }
-
-    /**
-     * Set prenom
-     *
-     * @param string $prenom
-     * @return Etudiant
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-    
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string 
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set situation
-     *
-     * @param string $situation
-     * @return Etudiant
-     */
-    public function setSituation($situation)
-    {
-        $this->situation = $situation;
-    
-        return $this;
-    }
-
-    /**
-     * Get situation
-     *
-     * @return string 
-     */
-    public function getSituation()
-    {
-        return $this->situation;
-    }
-
-    /**
-     * Set adresse
-     *
-     * @param string $adresse
-     * @return Etudiant
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-    
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string 
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
+        return $this->birthdate;
     }
 
     /**
@@ -163,61 +79,5 @@ class Etudiant
     public function getClasse()
     {
         return $this->classe;
-    }
-    /**
-     * @var integer
-     */
-    private $age;
-
-
-    /**
-     * Set age
-     *
-     * @param integer $age
-     * @return Etudiant
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-    
-        return $this;
-    }
-
-    /**
-     * Get age
-     *
-     * @return integer 
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-    /**
-     * @var \DateTime
-     */
-    private $birthdate;
-
-
-    /**
-     * Set birthdate
-     *
-     * @param \DateTime $birthdate
-     * @return Etudiant
-     */
-    public function setBirthdate($birthdate)
-    {
-        $this->birthdate = $birthdate;
-    
-        return $this;
-    }
-
-    /**
-     * Get birthdate
-     *
-     * @return \DateTime 
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
     }
 }

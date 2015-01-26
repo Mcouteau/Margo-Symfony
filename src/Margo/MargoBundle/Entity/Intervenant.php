@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Intervenant
  */
-class Intervenant
+class Intervenant extends Personnel
 {
     /**
      * @var integer
@@ -19,6 +19,24 @@ class Intervenant
      */
     private $is_permanent;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $matieres;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $classes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->matieres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -51,24 +69,6 @@ class Intervenant
     public function getIsPermanent()
     {
         return $this->is_permanent;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $matieres;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $classes;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->matieres = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

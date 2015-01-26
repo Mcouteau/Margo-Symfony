@@ -25,11 +25,23 @@ class Filiere
     private $classes;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $intervenants;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $matieres;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->intervenants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->matieres = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -97,16 +109,6 @@ class Filiere
     {
         return $this->classes;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $intervenants;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $matieres;
-
 
     /**
      * Add intervenants
